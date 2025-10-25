@@ -80,7 +80,7 @@ export const aiAPI = {
   optimizeItinerary: (activities: string[]) => 
     api.post<string[]>('/ai/optimize-itinerary', activities),
   getBudgetAllocation: (totalBudget: number, tripType: string) => 
-    api.get<string>(`/ai/budget-allocation?totalBudget=${totalBudget}&tripType=${tripType}`),
+    api.get<{ allocation: string }>(`/ai/budget-allocation?totalBudget=${totalBudget}&tripType=${tripType}`),
 };
 
 export default api;

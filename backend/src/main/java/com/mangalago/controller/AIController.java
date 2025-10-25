@@ -1,11 +1,11 @@
 package com.mangalago.controller;
 
+import com.mangalago.dto.BudgetAllocationResponse;
 import com.mangalago.service.AIService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/api/ai")
@@ -34,9 +34,10 @@ public class AIController {
     }
     
     @GetMapping("/budget-allocation")
-    public ResponseEntity<String> getBudgetAllocation(
+    public ResponseEntity<BudgetAllocationResponse> getBudgetAllocation(
             @RequestParam double totalBudget,
             @RequestParam(defaultValue = "moderate") String tripType) {
-        return ResponseEntity.ok(aiService.suggestBudgetAllocation(totalBudget, tripType));
+        String allocation = aiService.suggestBudgetAllocation(totalBudget, tripType);
+        return ResponseEntity.ok(new BudgetAllocationResponse(allocation));
     }
 }

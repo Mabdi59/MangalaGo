@@ -19,6 +19,7 @@ const TripDetails = () => {
     if (id) {
       fetchTripDetails();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   const fetchTripDetails = async () => {
@@ -41,7 +42,7 @@ const TripDetails = () => {
       try {
         const budgetRes = await budgetAPI.getByTripId(tripId);
         setBudget(budgetRes.data);
-      } catch (error) {
+      } catch {
         setBudget(null);
       }
     } catch (error) {

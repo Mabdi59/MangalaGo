@@ -11,6 +11,7 @@ const Trips = () => {
 
   useEffect(() => {
     fetchTrips();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filter]);
 
   const fetchTrips = async () => {
